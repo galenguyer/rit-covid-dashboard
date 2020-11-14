@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import logo from "./logo.svg";
+import Card from "./Card";
 import "./App.css";
 
 const url = "https://rcpoller.galenguyer.com/api/v0/history";
@@ -22,10 +22,16 @@ function App() {
             </div>
         );
 
+    const latest = data[data.length - 1];
+    const prior = data[data.length - 2];
+
     return (
         <div className="App">
             <h1>RIT Covid Dashboard</h1>
-            <h2>Data Loaded</h2>
+            <div className="Section">
+                <Card name="Total Student Cases" latest={latest.total_students} prior={prior.total_students} />
+                <Card name="Total Staff Cases" latest={latest.total_staff} prior={prior.total_staff} />
+            </div>
         </div>
     );
 }
