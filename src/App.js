@@ -5,7 +5,7 @@ import MainPage from "./MainPage";
 import History from "./History";
 import "./App.css";
 
-const url = "https://rcpoller.galenguyer.com/api/v0/history";
+const url = "https://ritcoviddashboard.com/api/v0/history";
 
 function App() {
     const { data: data, error: error } = useSWR(url);
