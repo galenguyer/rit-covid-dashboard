@@ -7,6 +7,10 @@ const MainPage = (props) => {
 
     return (
         <>
+            <h4 className="text-2xl">
+                Alert Level: {latest.alert_level.charAt(0).toUpperCase() + latest.alert_level.slice(1)}
+            </h4>
+            <br />
             <div id="total">
                 <h4 className="text-2xl">Total Positive Cases Since August 19 (First Day of Classes)</h4>
                 <div className="Section">

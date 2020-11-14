@@ -32,7 +32,7 @@ const History = (props) => {
                 margin={{ top: 15, right: 30, left: 20, bottom: 5 }}
                 data={data}
             >
-                <Line type="monotone" dataKey="value" stroke="#8884d8" dot={false} />
+                <Line type="monotone" dataKey="value" stroke="#fbd38d" dot={false} />
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                     dataKey="date"
@@ -66,7 +66,7 @@ class CustomizedAxisTick extends PureComponent {
 const CustomTooltip = ({ active, payload, label }) => {
     if (active) {
         return (
-            <div className="custom-tooltip bg-white border-blue-300 border-2 rounded-lg p-1">
+            <div className="custom-tooltip bg-white border-orange-300 border-2 rounded-lg p-1">
                 <p className="label">{DateTime.fromSeconds(label).toLocaleString()}</p>
                 <p className="desc">{payload[0].value}</p>
             </div>
