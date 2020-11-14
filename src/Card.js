@@ -7,12 +7,12 @@ const Card = (props) => {
         diff = "+" + diff.toString();
     }
     return (
-        <div className="Card">
-            <h3>{props.name}</h3>
+        <div className="Card bg-white rounded-lg border-2 border-orange-300 p-4 m-4">
+            <h3 className="text-lg">{props.name}</h3>
             <p>
                 {props.latest}
                 {props.suffix}{" "}
-                <span className="Diff">
+                <span className="Diff text-gray-600 text-sm">
                     ({diff}
                     {props.suffix})
                 </span>
