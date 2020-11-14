@@ -31,7 +31,16 @@ function App() {
     return (
         <div className="App">
             <h1>RIT Covid Dashboard</h1>
-            <h3>Last Updated: {lastUpdate.toLocaleString(DateTime.DATETIME_FULL)}</h3>
+            <h3>
+                Last Updated:{" "}
+                {lastUpdate.toLocaleString({
+                    weekday: "long",
+                    month: "long",
+                    day: "2-digit",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                })}
+            </h3>
             <div className="Section">
                 <Card name="Total Student Cases" latest={latest.total_students} prior={prior.total_students} />
                 <Card name="Total Staff Cases" latest={latest.total_staff} prior={prior.total_staff} />
