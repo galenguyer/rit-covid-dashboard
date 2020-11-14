@@ -132,6 +132,13 @@ function App() {
                         />
                     </Route>
                 </Switch>
+                <br />
+                <p>
+                    By Galen Guyer. Source available on{" "}
+                    <a className="text-blue-700" href="https://github.com/galenguyer/rit-covid-dashboard">
+                        GitHub
+                    </a>
+                </p>
             </div>
         </BrowserRouter>
     );
