@@ -3,7 +3,7 @@
     width: 50%;
 }
 
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 768px) {
     .Card {
         width: 20%;
     }
