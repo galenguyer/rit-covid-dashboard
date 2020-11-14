@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import { DateTime } from "luxon";
 import Card from "./Card";
 import "./App.css";
 
@@ -24,10 +25,13 @@ function App() {
 
     const latest = data[data.length - 1];
     const prior = data[data.length - 2];
+    const local = DateTime.local().zoneName;
+    const lastUpdate = DateTime.fromSQL(latest.last_updated, { zone: "UTC" }).setZone(local);
 
     return (
         <div className="App">
             <h1>RIT Covid Dashboard</h1>
+            <h3>Last Updated: {lastUpdate.toLocaleString(DateTime.DATETIME_FULL)}</h3>
             <div className="Section">
                 <Card name="Total Student Cases" latest={latest.total_students} prior={prior.total_students} />
                 <Card name="Total Staff Cases" latest={latest.total_staff} prior={prior.total_staff} />
