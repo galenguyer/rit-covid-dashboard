@@ -58,6 +58,79 @@ function App() {
                             })}
                         />
                     </Route>
+                    <Route path="/totalstaff">
+                        <History
+                            name="Total Staff Cases"
+                            data={data.map((d) => {
+                                return { value: d.total_staff, date: d.last_updated };
+                            })}
+                        />
+                    </Route>
+                    <Route path="/newstudents">
+                        <History
+                            name="New Student Cases"
+                            data={data.map((d) => {
+                                return { value: d.new_students, date: d.last_updated };
+                            })}
+                        />
+                    </Route>
+                    <Route path="/newstaff">
+                        <History
+                            name="New Staff Cases"
+                            data={data.map((d) => {
+                                return { value: d.new_staff, date: d.last_updated };
+                            })}
+                        />
+                    </Route>
+                    <Route path="/quarantineoncampus">
+                        <History
+                            name="Quarantine On Campus"
+                            data={data.map((d) => {
+                                return { value: d.quarantine_on_campus, date: d.last_updated };
+                            })}
+                        />
+                    </Route>
+                    <Route path="/quarantineoffcampus">
+                        <History
+                            name="Quarantine Off Campus"
+                            data={data.map((d) => {
+                                return { value: d.quarantine_off_campus, date: d.last_updated };
+                            })}
+                        />
+                    </Route>
+
+                    <Route path="/isolationoncampus">
+                        <History
+                            name="Isolation On Campus"
+                            data={data.map((d) => {
+                                return { value: d.isolation_on_campus, date: d.last_updated };
+                            })}
+                        />
+                    </Route>
+                    <Route path="/isolationoffcampus">
+                        <History
+                            name="Isolation Off Campus"
+                            data={data.map((d) => {
+                                return { value: d.isolation_off_campus, date: d.last_updated };
+                            })}
+                        />
+                    </Route>
+                    <Route path="/tests">
+                        <History
+                            name="Tests Administered"
+                            data={data.map((d) => {
+                                return { value: d.tests_administered, date: d.last_updated };
+                            })}
+                        />
+                    </Route>
+                    <Route path="/beds">
+                        <History
+                            name="Bed Availability"
+                            data={data.map((d) => {
+                                return { value: d.beds_available, date: d.last_updated };
+                            })}
+                        />
+                    </Route>
                 </Switch>
             </div>
         </BrowserRouter>

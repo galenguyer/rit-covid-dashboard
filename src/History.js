@@ -1,6 +1,17 @@
 import { React, PureComponent } from "react";
 import { DateTime } from "luxon";
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Label } from "recharts";
+import {
+    BarChart,
+    Bar,
+    LineChart,
+    Line,
+    CartesianGrid,
+    XAxis,
+    YAxis,
+    Tooltip,
+    ResponsiveContainer,
+    Label,
+} from "recharts";
 
 const History = (props) => {
     const offset = DateTime.fromSQL(props.data[0].date, { zone: "UTC" }).setZone(DateTime.local().zoneName).toSeconds();
@@ -10,7 +21,7 @@ const History = (props) => {
             date: DateTime.fromSQL(d.date, { zone: "UTC" }).setZone(DateTime.local().zoneName).toSeconds(),
         };
     });
-    
+
     return (
         <>
             <h3 className="text-3xl">{props.name}</h3>
@@ -21,7 +32,7 @@ const History = (props) => {
                 margin={{ top: 15, right: 30, left: 20, bottom: 5 }}
                 data={data}
             >
-                <Line type="monotone" dataKey="value" stroke="#8884d8" />
+                <Line type="monotone" dataKey="value" stroke="#8884d8" dot={false} />
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                     dataKey="date"
