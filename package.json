@@ -6,17 +6,19 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "autoprefixer": "^9.7.5",
     "luxon": "^1.25.0",
     "postcss": "^8.1.7",
+    "postcss-cli": "^7.1.0",
     "prettier": "^2.1.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "recharts": "^1.8.5",
     "swr": "^0.3.8",
-    "web-vitals": "^0.2.4",
     "tailwindcss": "^1.8.10",
-    "postcss-cli": "^7.1.0",
-    "autoprefixer": "^9.7.5" 
+    "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start": "craco start",
