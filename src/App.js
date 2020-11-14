@@ -45,7 +45,6 @@ function App() {
                     })}
                 </h3>
                 <br />
-                <br />
                 <Switch>
                     <Route exact path="/">
                         <MainPage latest={latest} prior={prior} />{" "}
