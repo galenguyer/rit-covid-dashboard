@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { SWRConfig } from "swr";
 import "./index.css";
 import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
