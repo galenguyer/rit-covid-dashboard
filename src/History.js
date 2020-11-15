@@ -32,7 +32,7 @@ const History = (props) => {
                 margin={{ top: 15, right: 30, left: 20, bottom: 5 }}
                 data={data}
             >
-                <Line type="monotone" dataKey="value" stroke="#fbd38d" dot={false} />
+                <Line type="monotone" dataKey="value" stroke="#CD8508" dot={false} />
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                     dataKey="date"
