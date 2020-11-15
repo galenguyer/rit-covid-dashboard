@@ -12,6 +12,7 @@ import {
     ResponsiveContainer,
     Label,
 } from "recharts";
+import GoatCounter from './GoatCounter';
 
 const History = (props) => {
     const offset = DateTime.fromSQL(props.data[0].date, { zone: "UTC" }).setZone(DateTime.local().zoneName).toSeconds();
@@ -45,6 +46,7 @@ const History = (props) => {
                 <YAxis dataKey="value" type="number"></YAxis>
                 <Tooltip content={CustomTooltip} />
             </LineChart>
+            <GoatCounter />
         </>
     );
 };

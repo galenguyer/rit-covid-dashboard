@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./Card";
+import GoatCounter from "./GoatCounter";
 
 const MainPage = (props) => {
     const latest = props.latest;
@@ -102,6 +103,7 @@ const MainPage = (props) => {
                     />
                 </div>
             </div>
+            <GoatCounter />
         </>
     );
 };

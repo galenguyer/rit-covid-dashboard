@@ -63,7 +63,7 @@ function App() {
 
                 <button
                     onClick={() => setTimeDifference(timeDifference == 1 ? 5 : 1)}
-                    class="bg-transparent text-sm hover:bg-orange-400 text-gray-600 hover:text-white py-1 my-1 px-2 border border-orange-300 hover:border-transparent rounded transition ease-in-out duration-300"
+                    className="bg-transparent text-sm hover:bg-orange-400 text-gray-600 hover:text-white py-1 my-1 px-2 border border-orange-300 hover:border-transparent rounded transition ease-in-out duration-300"
                 >
                     Use one {timeDifference == 1 ? "week" : "day"} ago
                 </button>
@@ -159,7 +159,7 @@ function App() {
                     By Galen Guyer. Source available on{" "}
                     <a className="text-blue-700" href="https://github.com/galenguyer/rit-covid-dashboard">
                         GitHub
-                    </a>
+                    </a> (<a href="https://github.com/galenguyer/rit-covid-dashboard/issues">Report Issue</a>)
                 </p>
             </div>
         </BrowserRouter>
