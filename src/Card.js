@@ -8,21 +8,21 @@ const Card = (props) => {
         diff = "+" + diff.toString();
     }
     return (
-        <div className="Card bg-white rounded-lg border-2 border-orange-300 p-4 m-4">
-            <Link to={props.link}>
+        <Link className="Card" style={{padding: 0}} to={props.link}>
+        <div className="group bg-white hover:bg-orange-400 rounded-lg border-2 border-orange-300 hover:border-orange-400 p-4 m-6 transition ease-in-out duration-300">
                 <p>
-                    <span className="text-2xl">
+                    <span className="text-2xl group-hover:text-white transition ease-in-out duration-300">
                         {props.latest}
                         {props.suffix}{" "}
                     </span>
-                    <span className="Diff text-gray-600 text-sm">
+                    <span className="Diff text-gray-600 group-hover:text-gray-100 text-sm transition ease-in-out duration-300">
                         ({diff}
                         {props.suffix})
                     </span>
                 </p>
-                <h3 className="text-base">{props.name}</h3>
-            </Link>
+                <h3 className="text-base group-hover:text-white transition ease-in-out duration-300">{props.name}</h3>
         </div>
+        </Link>
     );
 };
 
