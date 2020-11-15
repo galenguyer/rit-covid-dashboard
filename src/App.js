@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import { DateTime } from "luxon";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import MainPage from "./MainPage";
 import History from "./History";
 import "./App.css";
@@ -33,7 +33,7 @@ function App() {
     return (
         <BrowserRouter>
             <div className="App">
-                <h1 className="text-4xl">RIT Covid Dashboard</h1>
+                <h1 className="text-4xl"><Link to="/">RIT Covid Dashboard</Link></h1>
                 <h3>
                     Last Updated:{" "}
                     {lastUpdate.toLocaleString({
