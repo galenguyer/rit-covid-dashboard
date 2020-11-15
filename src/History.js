@@ -12,7 +12,7 @@ import {
     ResponsiveContainer,
     Label,
 } from "recharts";
-import GoatCounter from './GoatCounter';
+import GoatCounter from "./GoatCounter";
 
 const History = (props) => {
     const offset = DateTime.fromSQL(props.data[0].date, { zone: "UTC" }).setZone(DateTime.local().zoneName).toSeconds();

@@ -159,7 +159,12 @@ function App() {
                     By Galen Guyer. Source available on{" "}
                     <a className="text-blue-700" href="https://github.com/galenguyer/rit-covid-dashboard">
                         GitHub
-                    </a> (<a href="https://github.com/galenguyer/rit-covid-dashboard/issues">Report Issue</a>)
+                    </a>{" "}
+                    (
+                    <a className="text-blue-700" href="https://github.com/galenguyer/rit-covid-dashboard/issues">
+                        Report Issue
+                    </a>
+                    )
                 </p>
             </div>
         </BrowserRouter>
