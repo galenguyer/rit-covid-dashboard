@@ -1,3 +1,4 @@
+import React from "react";
 import useSWR from "swr";
 import { DateTime } from "luxon";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
@@ -9,6 +10,8 @@ const url = "https://ritcoviddashboard.com/api/v0/history";
 
 function App() {
     const { data: data, error: error } = useSWR(url);
+
+    const [timeDifference, setTimeDifference] = React.useState(1);
 
     if (error)
         return (
@@ -26,7 +29,7 @@ function App() {
         );
 
     const latest = data[data.length - 1];
-    const prior = data[data.length - 2];
+    const prior = data[data.length - (1 + timeDifference)];
     const local = DateTime.local().zoneName;
     const lastUpdate = DateTime.fromSQL(latest.last_updated, { zone: "UTC" }).setZone(local);
     const priorUpdate = DateTime.fromSQL(prior.last_updated, { zone: "UTC" }).setZone(local);
@@ -57,6 +60,13 @@ function App() {
                         minute: "2-digit",
                     })}
                 </h4>
+
+                <button
+                    onClick={() => setTimeDifference(timeDifference == 1 ? 5 : 1)}
+                    class="bg-transparent text-sm hover:bg-orange-400 text-gray-600 hover:text-white py-1 my-1 px-2 border border-orange-300 hover:border-transparent rounded transition ease-in-out duration-300"
+                >
+                    Use one {timeDifference == 1 ? "week" : "day"} ago
+                </button>
                 <br />
                 <Switch>
                     <Route exact path="/">
