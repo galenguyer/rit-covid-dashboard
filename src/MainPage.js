@@ -11,7 +11,7 @@ const MainPage = (props) => {
                 Alert Level: {latest.alert_level.charAt(0).toUpperCase() + latest.alert_level.slice(1)}
             </h4>
             <h5 className="text-gray-600 text-sm">
-                (Yesterday: {prior.alert_level.charAt(0).toUpperCase() + prior.alert_level.slice(1)})
+                (Prior Alert Level: {prior.alert_level.charAt(0).toUpperCase() + prior.alert_level.slice(1)})
             </h5>
             <br />
             <div id="total">
