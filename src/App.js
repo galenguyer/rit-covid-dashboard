@@ -29,11 +29,14 @@ function App() {
     const prior = data[data.length - 2];
     const local = DateTime.local().zoneName;
     const lastUpdate = DateTime.fromSQL(latest.last_updated, { zone: "UTC" }).setZone(local);
+    const priorUpdate = DateTime.fromSQL(prior.last_updated, { zone: "UTC" }).setZone(local);
 
     return (
         <BrowserRouter>
             <div className="App">
-                <h1 className="text-4xl"><Link to="/">RIT Covid Dashboard</Link></h1>
+                <h1 className="text-4xl">
+                    <Link to="/">RIT Covid Dashboard</Link>
+                </h1>
                 <h3>
                     Last Updated:{" "}
                     {lastUpdate.toLocaleString({
@@ -44,6 +47,16 @@ function App() {
                         minute: "2-digit",
                     })}
                 </h3>
+                <h4 className="text-sm text-gray-600">
+                    Prior Update:{" "}
+                    {priorUpdate.toLocaleString({
+                        weekday: "long",
+                        month: "long",
+                        day: "2-digit",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                    })}
+                </h4>
                 <br />
                 <Switch>
                     <Route exact path="/">
