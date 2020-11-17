@@ -107,6 +107,10 @@ const MainPage = (props) => {
             <br />
             <div id="tests">
                 <h4 className="text-2xl">Tests</h4>
+                <h5 className="text-base">
+                    Positive Test Rate is calculated using the difference in total cases divided by the difference in
+                    tests administed for the selected time frame (one day or one week)
+                </h5>
                 <div className="Section">
                     <Card
                         name="Tests Administered"
