@@ -3,8 +3,9 @@ import Card from "./Card";
 import GoatCounter from "./GoatCounter";
 
 const MainPage = (props) => {
-    const latest = props.latest;
-    const prior = props.prior;
+    const data = props.data;
+    const latest = data[data.length - 1];
+    const prior = data[data.length - (1 + props.timeDifference)];
 
     return (
         <>

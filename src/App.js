@@ -70,7 +70,7 @@ function App() {
                 <br />
                 <Switch>
                     <Route exact path="/">
-                        <MainPage latest={latest} prior={prior} />{" "}
+                        <MainPage data={data} timeDifference={timeDifference} />
                     </Route>
                     <Route path="/totalstudents">
                         <History
