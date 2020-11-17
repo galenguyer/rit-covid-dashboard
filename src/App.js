@@ -4,6 +4,7 @@ import { DateTime } from "luxon";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import MainPage from "./MainPage";
 import History from "./History";
+import HistoryTable from "./HistoryTable";
 import "./App.css";
 
 const url = "https://ritcoviddashboard.com/api/v0/history";
@@ -33,7 +34,18 @@ function App() {
     const local = DateTime.local().zoneName;
     const lastUpdate = DateTime.fromSQL(latest.last_updated, { zone: "UTC" }).setZone(local);
     const priorUpdate = DateTime.fromSQL(prior.last_updated, { zone: "UTC" }).setZone(local);
-
+    let positiveCases = [];
+    for (let i = 1; i < data.length; i++) {
+        positiveCases.push({
+            date: data[i].last_updated,
+            value: (
+                ((data[i].total_students - data[i - 1].total_students) * 100) /
+                (data[i].tests_administered - data[i - 1].tests_administered)
+            ).toFixed(1),
+        });
+    }
+    positiveCases = positiveCases.filter((o) => o.value > 0 && o.value <= 100);
+    console.log(positiveCases);
     return (
         <BrowserRouter>
             <div className="App">
@@ -144,6 +156,9 @@ function App() {
                                 return { value: d.tests_administered, date: d.last_updated };
                             })}
                         />
+                    </Route>
+                    <Route path="/positivetests">
+                        <HistoryTable name="Positive Tests" data={positiveCases} />
                     </Route>
                     <Route path="/beds">
                         <History
