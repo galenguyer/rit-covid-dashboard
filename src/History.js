@@ -68,8 +68,10 @@ class CustomizedAxisTick extends PureComponent {
 const CustomTooltip = ({ active, payload, label }) => {
     if (active) {
         return (
-            <div className="custom-tooltip bg-white border-orange-300 border-2 rounded-lg p-1">
-                <p className="label">{DateTime.fromSeconds(label).toLocaleString()}</p>
+            <div className="custom-tooltip bg-white border-orange-300 border-2 rounded-lg p-2">
+                <p className="label">
+                    {DateTime.fromSeconds(label).toLocaleString({ weekday: "long", month: "long", day: "2-digit" })}
+                </p>
                 <p className="desc">{payload[0].value}</p>
             </div>
         );
