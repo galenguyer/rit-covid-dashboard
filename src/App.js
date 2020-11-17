@@ -35,12 +35,12 @@ function App() {
     const lastUpdate = DateTime.fromSQL(latest.last_updated, { zone: "UTC" }).setZone(local);
     const priorUpdate = DateTime.fromSQL(prior.last_updated, { zone: "UTC" }).setZone(local);
     let positiveCases = [];
-    for (let i = 1; i < data.length; i++) {
+    for (let i = 5; i < data.length; i++) {
         positiveCases.push({
             date: data[i].last_updated,
             value: (
-                ((data[i].total_students - data[i - 1].total_students) * 100) /
-                (data[i].tests_administered - data[i - 1].tests_administered)
+                ((data[i].total_students - data[i - 5].total_students) * 100) /
+                (data[i].tests_administered - data[i - 5].tests_administered)
             ).toFixed(1),
         });
     }
@@ -158,7 +158,7 @@ function App() {
                         />
                     </Route>
                     <Route path="/positivetests">
-                        <HistoryTable name="Positive Tests" data={positiveCases} />
+                        <History name="Positive Test Rate (Over One Week)" data={positiveCases} />
                     </Route>
                     <Route path="/beds">
                         <History

@@ -122,7 +122,7 @@ const MainPage = (props) => {
                         name="Positive Test Rate"
                         latest={positiveTestRate + "%"}
                         diff={priorPositiveTestRate + "%"}
-                        link="/"
+                        link="/positivetests"
                     />
                 </div>
             </div>
