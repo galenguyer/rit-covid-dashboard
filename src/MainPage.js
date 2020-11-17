@@ -6,6 +6,16 @@ const MainPage = (props) => {
     const data = props.data;
     const latest = data[data.length - 1];
     const prior = data[data.length - (1 + props.timeDifference)];
+    const priorPrior = data[data.length - (1 + props.timeDifference * 2)];
+
+    const positiveTestRate = (
+        ((latest.total_students - prior.total_students) * 100) /
+        (latest.tests_administered - prior.tests_administered)
+    ).toFixed(1);
+    const priorPositiveTestRate = (
+        ((prior.total_students - priorPrior.total_students) * 100) /
+        (prior.tests_administered - priorPrior.tests_administered)
+    ).toFixed(1);
 
     return (
         <>
@@ -96,13 +106,19 @@ const MainPage = (props) => {
             </div>
             <br />
             <div id="tests">
-                <h4 className="text-2xl">Number of Tests Administered by Student Health Center</h4>
+                <h4 className="text-2xl">Tests</h4>
                 <div className="Section">
                     <Card
-                        name="Tests to date"
+                        name="Tests Administered"
                         latest={latest.tests_administered}
                         diff={latest.tests_administered - prior.tests_administered}
                         link="/tests"
+                    />
+                    <Card
+                        name="Positive Test Rate"
+                        latest={positiveTestRate + "%"}
+                        diff={priorPositiveTestRate + "%"}
+                        link="/"
                     />
                 </div>
             </div>
