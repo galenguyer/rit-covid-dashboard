@@ -22,18 +22,33 @@ const MainPage = (props) => {
                     <Card
                         name="Students"
                         latest={latest.total_students}
-                        prior={prior.total_students}
+                        diff={latest.total_students - prior.total_students}
                         link="/totalstudents"
                     />
-                    <Card name="Staff" latest={latest.total_staff} prior={prior.total_staff} link="/totalstaff" />
+                    <Card
+                        name="Staff"
+                        latest={latest.total_staff}
+                        diff={latest.total_staff - prior.total_staff}
+                        link="/totalstaff"
+                    />
                 </div>
             </div>
             <br />
             <div id="new">
                 <h4 className="text-2xl">New Positive Cases From Past 14 Days</h4>
                 <div className="Section">
-                    <Card name="Students" latest={latest.new_students} prior={prior.new_students} link="/newstudents" />
-                    <Card name="Staff" latest={latest.new_staff} prior={prior.new_staff} link="/newstaff" />
+                    <Card
+                        name="Students"
+                        latest={latest.new_students}
+                        diff={latest.new_students - prior.new_students}
+                        link="/newstudents"
+                    />
+                    <Card
+                        name="Staff"
+                        latest={latest.new_staff}
+                        diff={latest.new_staff - prior.new_staff}
+                        link="/newstaff"
+                    />
                 </div>
             </div>
             <br />
@@ -47,13 +62,13 @@ const MainPage = (props) => {
                     <Card
                         name="On Campus"
                         latest={latest.quarantine_on_campus}
-                        prior={prior.quarantine_on_campus}
+                        diff={latest.quarantine_on_campus - prior.quarantine_on_campus}
                         link="/quarantineoncampus"
                     />
                     <Card
                         name="Off Campus"
                         latest={latest.quarantine_off_campus}
-                        prior={prior.quarantine_off_campus}
+                        diff={latest.quarantine_off_campus - prior.quarantine_off_campus}
                         link="/quarantineoffcampus"
                     />
                 </div>
@@ -68,13 +83,13 @@ const MainPage = (props) => {
                     <Card
                         name="On Campus"
                         latest={latest.isolation_on_campus}
-                        prior={prior.isolation_on_campus}
+                        diff={latest.isolation_on_campus - prior.isolation_on_campus}
                         link="isolationoncampus"
                     />
                     <Card
                         name="Off Campus"
                         latest={latest.isolation_off_campus}
-                        prior={prior.isolation_off_campus}
+                        diff={latest.isolation_off_campus - prior.isolation_off_campus}
                         link="isolationoffcampus"
                     />
                 </div>
@@ -86,7 +101,7 @@ const MainPage = (props) => {
                     <Card
                         name="Tests to date"
                         latest={latest.tests_administered}
-                        prior={prior.tests_administered}
+                        diff={latest.tests_administered - prior.tests_administered}
                         link="/tests"
                     />
                 </div>
@@ -97,8 +112,8 @@ const MainPage = (props) => {
                 <div className="Section">
                     <Card
                         name="Beds Available"
-                        latest={latest.beds_available}
-                        prior={prior.beds_available}
+                        latest={latest.beds_available + "%"}
+                        diff={latest.beds_available - prior.beds_available + "%"}
                         suffix="%"
                         link="/beds"
                     />
