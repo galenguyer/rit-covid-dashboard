@@ -121,7 +121,7 @@ const MainPage = (props) => {
                     <Card
                         name="Positive Test Rate"
                         latest={positiveTestRate + "%"}
-                        diff={positiveTestRate - priorPositiveTestRate + "%"}
+                        diff={(positiveTestRate - priorPositiveTestRate).toFixed(1) + "%"}
                         link="/positivetests"
                     />
                 </div>
