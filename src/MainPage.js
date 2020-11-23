@@ -8,13 +8,21 @@ const MainPage = (props) => {
     const prior = data[data.length - (1 + props.timeDifference)];
     const priorPrior = data[data.length - (1 + props.timeDifference * 2)];
 
-    const positiveTestRate = (
-        ((latest.total_students - prior.total_students) * 100) /
-        (latest.tests_administered - prior.tests_administered)
+    const positiveTestRate = Math.max(
+        0,
+        Math.min(
+            100,
+            ((latest.total_students - prior.total_students) * 100) /
+                (latest.tests_administered - prior.tests_administered)
+        )
     ).toFixed(1);
-    const priorPositiveTestRate = (
-        ((prior.total_students - priorPrior.total_students) * 100) /
-        (prior.tests_administered - priorPrior.tests_administered)
+    const priorPositiveTestRate = Math.max(
+        0,
+        Math.min(
+            100,
+            ((prior.total_students - priorPrior.total_students) * 100) /
+                (prior.tests_administered - priorPrior.tests_administered)
+        )
     ).toFixed(1);
 
     return (
