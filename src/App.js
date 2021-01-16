@@ -10,9 +10,10 @@ import "./App.css";
 const url = "https://ritcoviddashboard.com/api/v0/history";
 
 function App() {
-    const { data: data, error: error } = useSWR(url);
+    let { data: rawData, error: error } = useSWR(url);
 
     const [timeDifference, setTimeDifference] = React.useState(1);
+    const [showAllTime, setShowAllTime] = React.useState(true);
 
     if (error)
         return (
@@ -21,7 +22,7 @@ function App() {
                 <h2>An error occurred</h2>
             </div>
         );
-    if (!data)
+    if (!rawData)
         return (
             <div className="App">
                 <h1>RIT Covid Dashboard</h1>
@@ -29,9 +30,36 @@ function App() {
             </div>
         );
 
+    let data = rawData;
+    const local = DateTime.local().zoneName;
+    const semesterStart = DateTime.fromISO("2021-01-01");
+    if (!showAllTime) {
+        data = rawData.filter((d) => {
+            let date = DateTime.fromSQL(d.last_updated, { zone: "UTC" }).setZone(local);
+            return date > semesterStart;
+        });
+        const last = rawData[rawData.length - data.length - 1];
+        data = data.map((d) => {
+            return {
+                alert_level: d.alert_level,
+                beds_available: d.beds_available,
+                isolation_off_campus: d.isolation_off_campus,
+                isolation_on_campus: d.isolation_on_campus,
+                last_updated: d.last_updated,
+                new_staff: d.new_staff,
+                new_students: d.new_students,
+                quarantine_off_campus: d.quarantine_off_campus,
+                quarantine_on_campus: d.quarantine_on_campus,
+                tests_administered: d.tests_administered - last.tests_administered,
+                total_staff: d.total_staff - last.total_staff,
+                total_students: d.total_students - last.total_students,
+            };
+        });
+    }
+
+    console.log(data);
     const latest = data[data.length - 1];
     const prior = data[data.length - (1 + timeDifference)];
-    const local = DateTime.local().zoneName;
     const lastUpdate = DateTime.fromSQL(latest.last_updated, { zone: "UTC" }).setZone(local);
     const priorUpdate = DateTime.fromSQL(prior.last_updated, { zone: "UTC" }).setZone(local);
     let positiveCases = [];
@@ -45,7 +73,6 @@ function App() {
         });
     }
     positiveCases = positiveCases.filter((o) => o.value > 0 && o.value <= 100);
-    console.log(positiveCases);
     return (
         <BrowserRouter>
             <div className="App">
@@ -72,17 +99,23 @@ function App() {
                         minute: "2-digit",
                     })}
                 </h4>
-
                 <button
                     onClick={() => setTimeDifference(timeDifference == 1 ? 5 : 1)}
                     className="bg-transparent text-sm hover:bg-orange-400 text-gray-600 hover:text-white py-1 my-1 px-2 border border-orange-300 hover:border-transparent rounded transition ease-in-out duration-300"
                 >
                     Use one {timeDifference == 1 ? "week" : "day"} ago
                 </button>
+                &nbsp;
+                <button
+                    onClick={() => setShowAllTime(showAllTime ? false : true)}
+                    className="bg-transparent text-sm hover:bg-orange-400 text-gray-600 hover:text-white py-1 my-1 px-2 border border-orange-300 hover:border-transparent rounded transition ease-in-out duration-300"
+                >
+                    Show {showAllTime ? "current semester" : "all time"}
+                </button>
                 <br />
                 <Switch>
                     <Route exact path="/">
-                        <MainPage data={data} timeDifference={timeDifference} />
+                        <MainPage data={data} timeDifference={timeDifference} showAllTime={showAllTime} />
                     </Route>
                     <Route path="/totalstudents">
                         <History

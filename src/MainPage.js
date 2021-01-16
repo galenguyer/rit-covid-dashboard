@@ -35,7 +35,9 @@ const MainPage = (props) => {
             </h5>
             <br />
             <div id="total">
-                <h4 className="text-2xl">Total Positive Cases Since August 19 (First Day of Classes)</h4>
+                <h4 className="text-2xl">
+                    Total Positive Cases Since {props.showAllTime ? "August 19 (First Day of Classes)" : "January 1"}
+                </h4>
                 <div className="Section">
                     <Card
                         name="Students"
