@@ -6,7 +6,7 @@ const MainPage = (props) => {
     const data = props.data;
     const latest = data[data.length - 1];
     const prior = data[data.length - (1 + props.timeDifference)];
-    const priorPrior = data[data.length - (1 + props.timeDifference * 2)];
+    const priorPrior = data[Math.max(0, data.length - (1 + props.timeDifference * 2))];
 
     const positiveTestRate = Math.max(
         0,
