@@ -13,7 +13,7 @@ function App() {
     let { data: rawData, error: error } = useSWR(url);
 
     const [timeDifference, setTimeDifference] = React.useState(1);
-    const [showAllTime, setShowAllTime] = React.useState(true);
+    const [showAllTime, setShowAllTime] = React.useState(false);
 
     if (error)
         return (
