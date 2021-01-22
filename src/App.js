@@ -214,6 +214,11 @@ function App() {
                     </a>
                     )
                 </p>
+                <p>
+                    <a className="text-blue-700" href="https://galenguyer.com/projects/ritcoviddashboard">
+                        API Documentation
+                    </a>
+                </p>
             </div>
         </BrowserRouter>
     );
