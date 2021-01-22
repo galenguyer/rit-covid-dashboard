@@ -119,7 +119,9 @@ const MainPage = (props) => {
                 <h4 className="text-2xl">Tests</h4>
                 <h5 className="text-base">
                     Positive Test Rate is calculated using the difference in total cases divided by the difference in
-                    tests administed for the selected time frame (one day or one week)
+                    tests administed for the selected time frame (one day or one week). The daily positive test rate
+                    fluctuates wildly and should be taken with caution, while the weekly positive test rate is far more
+                    stable and useful.
                 </h5>
                 <div className="Section">
                     <Card
