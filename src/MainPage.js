@@ -56,20 +56,9 @@ const MainPage = (props) => {
             <br />
             <div id="new">
                 <h4 className="text-2xl">New Positive Cases From Past 14 Days</h4>
-                <div className="Section">
-                    <Card
-                        name="Students"
-                        latest={latest.new_students}
-                        diff={latest.new_students - prior.new_students}
-                        link="/newstudents"
-                    />
-                    <Card
-                        name="Staff"
-                        latest={latest.new_staff}
-                        diff={latest.new_staff - prior.new_staff}
-                        link="/newstaff"
-                    />
-                </div>
+                <h5 className="text-base">
+                    This statistic has been temporarily removed, as RIT removed it from the official dashboard.
+                </h5>
             </div>
             <br />
             <div id="quarantine">
