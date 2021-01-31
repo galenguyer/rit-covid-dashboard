@@ -10,7 +10,7 @@ const Card = (props) => {
 
     return (
         <Link className="Card" style={{ padding: 0 }} to={props.link}>
-            <div className="group bg-white hover:bg-orange-400 rounded-lg border-2 border-orange-300 hover:border-orange-400 p-4 m-6 transition ease-in-out duration-300">
+            <div className="group bg-white hover:bg-orange-400 rounded-lg border-2 border-orange-300 hover:border-orange-400 p-2 m-6 transition ease-in-out duration-300">
                 <p>
                     <span className="text-2xl group-hover:text-white transition ease-in-out duration-300">
                         {props.latest}{" "}

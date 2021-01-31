@@ -2,6 +2,9 @@
     text-align: center;
     padding-bottom: 2rem;
     padding-top: 1rem;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .Section {
