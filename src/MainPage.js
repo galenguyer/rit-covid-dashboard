@@ -57,8 +57,23 @@ const MainPage = (props) => {
             <div id="new">
                 <h4 className="text-2xl">New Positive Cases From Past 14 Days</h4>
                 <h5 className="text-base">
-                    This statistic has been temporarily removed, as RIT removed it from the official dashboard.
+                    RIT has removed this statistic from the official dashboard, so at the moment, it is calculated by
+                    the API backend. As such, there may be errors, but a quick review looks like it's working right.
                 </h5>
+                <div className="Section">
+                    <Card
+                        name="Students"
+                        latest={latest.new_students}
+                        diff={latest.new_students - prior.new_students}
+                        link="/newstudents"
+                    />
+                    <Card
+                        name="Staff"
+                        latest={latest.new_staff}
+                        diff={latest.new_staff - prior.new_staff}
+                        link="/newstaff"
+                    />
+                </div>
             </div>
             <br />
             <div id="quarantine">
