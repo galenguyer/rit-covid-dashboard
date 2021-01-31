@@ -97,13 +97,14 @@ function App() {
                         day: "2-digit",
                         hour: "2-digit",
                         minute: "2-digit",
-                    })}
+                    })}{" "}
+                    ({timeDifference == 1 ? "one day ago" : timeDifference == 5 ? "one week ago" : "two weeks ago"})
                 </h4>
                 <button
-                    onClick={() => setTimeDifference(timeDifference == 1 ? 5 : 1)}
+                    onClick={() => setTimeDifference(timeDifference == 1 ? 5 : timeDifference == 5 ? 10 : 1)}
                     className="bg-transparent text-sm hover:bg-orange-400 text-gray-600 hover:text-white py-1 my-1 px-2 border border-orange-300 hover:border-transparent rounded transition ease-in-out duration-300"
                 >
-                    Use one {timeDifference == 1 ? "week" : "day"} ago
+                    Use {timeDifference == 10 ? "one day" : timeDifference == 5 ? "two weeks" : "one week"} ago
                 </button>
                 &nbsp;
                 <button
