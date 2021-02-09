@@ -56,10 +56,6 @@ const MainPage = (props) => {
             <br />
             <div id="new">
                 <h4 className="text-2xl">New Positive Cases From Past 14 Days</h4>
-                <h5 className="text-base">
-                    RIT has removed this statistic from the official dashboard, so at the moment, it is calculated by
-                    the API backend. As such, there may be errors, but a quick review looks like it's working right.
-                </h5>
                 <div className="Section">
                     <Card
                         name="Students"
