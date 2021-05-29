@@ -34,6 +34,16 @@ const MainPage = (props) => {
                 (Prior Alert Level: {prior.alert_level.charAt(0).toUpperCase() + prior.alert_level.slice(1)})
             </h5>
             <br />
+            <h2 className="text-xl">
+                This dashboard will not be updating for the summer. RIT is only providing the New Cases statistic on the
+                official dashboard. The API will continue to ingest data and be available, but modifying this page to
+                accomodate the new dashboard is not currently worth the effort. All historical data will remain
+                available on this page, but for any new information, please use{" "}
+                <a className="text-blue-700" href="https://rit.edu/ready/summer-dashboard">
+                    the official dashboard.
+                </a>
+            </h2>
+            <br />
             <div id="total">
                 <h4 className="text-2xl">
                     Total Positive Cases Since {props.showAllTime ? "August 19 (First Day of Classes)" : "January 1"}
