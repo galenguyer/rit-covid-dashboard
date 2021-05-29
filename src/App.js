@@ -30,7 +30,9 @@ function App() {
             </div>
         );
 
+    rawData = rawData.slice(0, 177);
     let data = rawData;
+    console.log(data.length);
     const local = DateTime.local().zoneName;
     const semesterStart = DateTime.fromISO("2021-01-01");
     if (!showAllTime) {
@@ -57,7 +59,6 @@ function App() {
         });
     }
 
-    console.log(data);
     const latest = data[data.length - 1];
     const prior = data[data.length - (1 + timeDifference)];
     const lastUpdate = DateTime.fromSQL(latest.last_updated, { zone: "UTC" }).setZone(local);
