@@ -6,47 +6,44 @@ const MainPage = (props) => {
     const data = props.data;
     const latest = data[data.length - 1];
     const prior = data[data.length - (1 + props.timeDifference)];
-    const priorPrior = data[Math.max(0, data.length - (1 + props.timeDifference * 2))];
+    // const priorPrior = data[Math.max(0, data.length - (1 + props.timeDifference * 2))];
 
-    const positiveTestRate = Math.max(
-        0,
-        Math.min(
-            100,
-            ((latest.total_students - prior.total_students) * 100) /
-                (latest.tests_administered - prior.tests_administered)
-        )
-    ).toFixed(1);
-    const priorPositiveTestRate = Math.max(
-        0,
-        Math.min(
-            100,
-            ((prior.total_students - priorPrior.total_students) * 100) /
-                (prior.tests_administered - priorPrior.tests_administered)
-        )
-    ).toFixed(1);
+    // const positiveTestRate = Math.max(
+    //     0,
+    //     Math.min(
+    //         100,
+    //         ((latest.total_students - prior.total_students) * 100) /
+    //             (latest.tests_administered - prior.tests_administered)
+    //     )
+    // ).toFixed(1);
+    // const priorPositiveTestRate = Math.max(
+    //     0,
+    //     Math.min(
+    //         100,
+    //         ((prior.total_students - priorPrior.total_students) * 100) /
+    //             (prior.tests_administered - priorPrior.tests_administered)
+    //     )
+    // ).toFixed(1);
 
     return (
         <>
-            <h4 className="text-2xl">
+            {/* <h4 className="text-2xl">
                 Alert Level: {latest.alert_level.charAt(0).toUpperCase() + latest.alert_level.slice(1)}
             </h4>
             <h5 className="text-gray-600 text-sm">
                 (Prior Alert Level: {prior.alert_level.charAt(0).toUpperCase() + prior.alert_level.slice(1)})
             </h5>
-            <br />
+            <br /> */}
             <h2 className="text-xl">
-                This dashboard will not be updating for the summer. RIT is only providing the New Cases statistic on the
-                official dashboard. The API will continue to ingest data and be available, but modifying this page to
-                accomodate the new dashboard is not currently worth the effort. All historical data will remain
-                available on this page, but for any new information, please use{" "}
-                <a className="text-blue-700" href="https://rit.edu/ready/summer-dashboard">
-                    the official dashboard.
-                </a>
+                This dashboard has been refreshed for the new school year. For historical data, please contact
+                me at gkg1648 [AT] rit [DOT] edu. More cards and features will be re-added if they are added to
+                the official dashboard.
             </h2>
             <br />
             <div id="total">
                 <h4 className="text-2xl">
-                    Total Positive Cases Since {props.showAllTime ? "August 19 (First Day of Classes)" : "January 1"}
+                    {/* Total Positive Cases Since {props.showAllTime ? "August 19 (First Day of Classes)" : "January 1"} */}
+                    Total Positive Cases Since August 16 (First Day of Move-In)
                 </h4>
                 <div className="Section">
                     <Card
@@ -81,7 +78,7 @@ const MainPage = (props) => {
                     />
                 </div>
             </div>
-            <br />
+            {/* <br />
             <div id="quarantine">
                 <h4 className="text-2xl">Number of Students in Quarantine</h4>
                 <h5 className="text-base">
@@ -160,7 +157,7 @@ const MainPage = (props) => {
                         link="/beds"
                     />
                 </div>
-            </div>
+            </div> */}
             <GoatCounter />
         </>
     );

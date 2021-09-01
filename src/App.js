@@ -30,50 +30,50 @@ function App() {
             </div>
         );
 
-    rawData = rawData.slice(0, 177);
+    // rawData = rawData.slice(0, 177);
     let data = rawData;
     console.log(data.length);
     const local = DateTime.local().zoneName;
     const semesterStart = DateTime.fromISO("2021-01-01");
-    if (!showAllTime) {
-        data = rawData.filter((d) => {
-            let date = DateTime.fromSQL(d.last_updated, { zone: "UTC" }).setZone(local);
-            return date > semesterStart;
-        });
-        const last = rawData[rawData.length - data.length - 1];
-        data = data.map((d) => {
-            return {
-                alert_level: d.alert_level,
-                beds_available: d.beds_available,
-                isolation_off_campus: d.isolation_off_campus,
-                isolation_on_campus: d.isolation_on_campus,
-                last_updated: d.last_updated,
-                new_staff: d.new_staff,
-                new_students: d.new_students,
-                quarantine_off_campus: d.quarantine_off_campus,
-                quarantine_on_campus: d.quarantine_on_campus,
-                tests_administered: d.tests_administered - last.tests_administered,
-                total_staff: d.total_staff - last.total_staff,
-                total_students: d.total_students - last.total_students,
-            };
-        });
-    }
+    // if (!showAllTime) {
+    //     data = rawData.filter((d) => {
+    //         let date = DateTime.fromSQL(d.last_updated, { zone: "UTC" }).setZone(local);
+    //         return date > semesterStart;
+    //     });
+    //     const last = rawData[rawData.length - data.length - 1];
+    //     data = data.map((d) => {
+    //         return {
+    //             alert_level: d.alert_level,
+    //             beds_available: d.beds_available,
+    //             isolation_off_campus: d.isolation_off_campus,
+    //             isolation_on_campus: d.isolation_on_campus,
+    //             last_updated: d.last_updated,
+    //             new_staff: d.new_staff,
+    //             new_students: d.new_students,
+    //             quarantine_off_campus: d.quarantine_off_campus,
+    //             quarantine_on_campus: d.quarantine_on_campus,
+    //             tests_administered: d.tests_administered - last.tests_administered,
+    //             total_staff: d.total_staff - last.total_staff,
+    //             total_students: d.total_students - last.total_students,
+    //         };
+    //     });
+    // }
 
     const latest = data[data.length - 1];
     const prior = data[data.length - (1 + timeDifference)];
     const lastUpdate = DateTime.fromSQL(latest.last_updated, { zone: "UTC" }).setZone(local);
     const priorUpdate = DateTime.fromSQL(prior.last_updated, { zone: "UTC" }).setZone(local);
-    let positiveCases = [];
-    for (let i = 5; i < data.length; i++) {
-        positiveCases.push({
-            date: data[i].last_updated,
-            value: (
-                ((data[i].total_students - data[i - 5].total_students) * 100) /
-                (data[i].tests_administered - data[i - 5].tests_administered)
-            ).toFixed(1),
-        });
-    }
-    positiveCases = positiveCases.filter((o) => o.value > 0 && o.value <= 100);
+    // let positiveCases = [];
+    // for (let i = 5; i < data.length; i++) {
+    //     positiveCases.push({
+    //         date: data[i].last_updated,
+    //         value: (
+    //             ((data[i].total_students - data[i - 5].total_students) * 100) /
+    //             (data[i].tests_administered - data[i - 5].tests_administered)
+    //         ).toFixed(1),
+    //     });
+    // }
+    // positiveCases = positiveCases.filter((o) => o.value > 0 && o.value <= 100);
     return (
         <BrowserRouter>
             <div className="App">
@@ -101,7 +101,7 @@ function App() {
                     })}{" "}
                     ({timeDifference == 1 ? "one day ago" : timeDifference == 5 ? "one week ago" : "two weeks ago"})
                 </h4>
-                <button
+                {/* <button
                     onClick={() => setTimeDifference(timeDifference == 1 ? 5 : timeDifference == 5 ? 10 : 1)}
                     className="bg-transparent text-sm hover:bg-orange-400 text-gray-600 hover:text-white py-1 my-1 px-2 border border-orange-300 hover:border-transparent rounded transition ease-in-out duration-300"
                 >
@@ -113,7 +113,7 @@ function App() {
                     className="bg-transparent text-sm hover:bg-orange-400 text-gray-600 hover:text-white py-1 my-1 px-2 border border-orange-300 hover:border-transparent rounded transition ease-in-out duration-300"
                 >
                     Show {showAllTime ? "current semester" : "all time"}
-                </button>
+                </button> */}
                 <br />
                 <Switch>
                     <Route exact path="/">
@@ -151,7 +151,7 @@ function App() {
                             })}
                         />
                     </Route>
-                    <Route path="/quarantineoncampus">
+                    {/* <Route path="/quarantineoncampus">
                         <History
                             name="Quarantine On Campus"
                             data={data.map((d) => {
@@ -202,7 +202,7 @@ function App() {
                                 return { value: d.beds_available, date: d.last_updated };
                             })}
                         />
-                    </Route>
+                    </Route> */}
                 </Switch>
                 <br />
                 <p>

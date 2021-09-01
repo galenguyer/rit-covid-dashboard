@@ -1,10 +1,10 @@
-FROM node:12.16.2 as build-deps
+FROM node:12.17 as build-deps
+RUN npm i -g pnpm
 WORKDIR /usr/src/app
-COPY package.json yarn.lock ./
-RUN yarn
+COPY package.json ./
+RUN pnpm i
 COPY . ./
-RUN yarn build
+RUN pnpm build
 
-FROM docker.galenguyer.com/nginx-auto/nginx-react
-COPY --from=build-deps /usr/src/app/build /var/www/html/
-CMD ["nginx", "-g", "daemon off;"]
+FROM cr.galenguyer.com/nginx/spa:latest
+COPY --from=build-deps /usr/src/app/build /usr/share/nginx/html/
