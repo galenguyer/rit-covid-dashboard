@@ -61,8 +61,8 @@ function App() {
 
     const latest = data[data.length - 1];
     const prior = data[data.length - (1 + timeDifference)];
-    const lastUpdate = DateTime.fromSQL(latest.last_updated, { zone: "UTC" }).setZone(local);
-    const priorUpdate = DateTime.fromSQL(prior.last_updated, { zone: "UTC" }).setZone(local);
+    const lastUpdate = DateTime.fromSQL(latest.last_updated).setZone(local);
+    const priorUpdate = DateTime.fromSQL(prior.last_updated).setZone(local);
     // let positiveCases = [];
     // for (let i = 5; i < data.length; i++) {
     //     positiveCases.push({
