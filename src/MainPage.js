@@ -35,9 +35,9 @@ const MainPage = (props) => {
             </h5>
             <br /> */}
             <h2 className="text-xl">
-                This dashboard has been refreshed for the new school year. For historical data, please contact
-                me at gkg1648 [AT] rit [DOT] edu. More cards and features will be re-added if they are added to
-                the official dashboard.
+                This dashboard has been refreshed for the new semester. Historical data from the 2020-2021 school year is
+                available at <a href="//2020.ritcoviddashboard.com">2020.ritcoviddashboard.com</a>. Data from the Fall 2021
+                semester is available at <a href="//2021.ritcoviddashboard.com">2021.ritcoviddashboard.com</a>.
             </h2>
             <br />
             <div id="total">
