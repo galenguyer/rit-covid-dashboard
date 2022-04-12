@@ -5,5 +5,5 @@ RUN yarn
 COPY . ./
 RUN yarn build
 
-FROM cr.galenguyer.com/nginx/spa:latest
+FROM cr.galenguyer.com/nginx:spa
 COPY --from=build-deps /usr/src/app/build /usr/share/nginx/html/

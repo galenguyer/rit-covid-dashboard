@@ -12,6 +12,7 @@ specifiers:
   prettier: ^2.1.2
   react: ^17.0.1
   react-dom: ^17.0.1
+  react-refresh: ^0.12.0
   react-router-dom: ^5.2.0
   react-scripts: 4.0.0
   recharts: ^1.8.5
@@ -30,6 +31,7 @@ dependencies:
   prettier: 2.4.1
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
+  react-refresh: 0.12.0
   react-router-dom: 5.3.0_react@17.0.2
   react-scripts: 4.0.0
   recharts: 1.8.5_react-dom@17.0.2+react@17.0.2
@@ -9785,6 +9787,11 @@ packages:
 
   /react-lifecycles-compat/3.0.4:
     resolution: {integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==}
+    dev: false
+
+  /react-refresh/0.12.0:
+    resolution: {integrity: sha512-suLIhrU2IHKL5JEKR/fAwJv7bbeq4kJ+pJopf77jHwuR+HmJS/HbrPIGsTBUVfw7tXPOmYv7UJ7PCaN49e8x4A==}
+    engines: {node: '>=0.10.0'}
     dev: false
 
   /react-refresh/0.8.3:

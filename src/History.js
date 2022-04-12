@@ -9,6 +9,7 @@ import {
     XAxis,
     YAxis,
     Tooltip,
+    ReferenceLine,
     ResponsiveContainer,
     Label,
 } from "recharts";
@@ -23,6 +24,10 @@ const History = (props) => {
         };
     });
 
+    if (process.env.NODE_ENV == "development") {
+        console.log(data);
+    }
+
     return (
         <>
             <h3 className="text-3xl">{props.name}</h3>
@@ -34,6 +39,8 @@ const History = (props) => {
                 data={data}
             >
                 <Line type="monotone" dataKey="value" stroke="#CD8508" dot={false} />
+                {/* <ReferenceLine x={1644594525} label={{ value: "Visitor Policy adjusted", angle: -90, position: 'center' }} /> */}
+                <ReferenceLine x={1647550274} label={{ value: "Mask Mandate dropped", angle: -90, position: 'left' }} />
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                     dataKey="date"
