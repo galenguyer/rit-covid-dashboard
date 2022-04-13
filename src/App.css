@@ -1,15 +1,37 @@
 .App {
-    text-align: center;
-    padding-bottom: 2rem;
-    padding-top: 1rem;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+  text-align: center;
+  margin: auto;
+  max-width: 90vw;
+
+  position: relative;
+  min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
-.Section {
-    display: flex;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+.App h1 {
+  font-size: 2.4em;
+  margin: 18px 0px 8px 0px;
+}
+.Updated .Latest {
+  font-size: 1.3em;
+  margin: 0px;
+}
+.Updated .Prior {
+  margin: 6px;
+  color: #666;
+}
+
+.App a {
+  text-decoration: none;
+  color: #000;
+}
+
+.BlueLink {
+  color: #008 !important;
+}
+
+footer {
+  margin-top: auto;
+  margin-bottom: 20px;
 }

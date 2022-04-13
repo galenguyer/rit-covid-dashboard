@@ -1,0 +1,43 @@
+.cardLink {
+    text-decoration: none;
+    color: black;
+}
+
+.Card {
+    text-decoration: none;
+    color: #000;
+    border: 2px solid #fbd38d;
+    border-radius: 12px;
+    padding: 0px 40px;
+    margin: 24px;
+}
+
+@media screen and (max-width: 600px) {
+    .Card {
+        padding: 0px 20px;
+        margin: 18px;
+    }    
+}
+
+.Latest {
+    font-size: 1.8em;
+}
+
+.Diff {
+    color: #666;
+}
+
+.Card:hover {
+    background-color: #ffc869;
+    color: #fff;
+}
+.Card:hover .Diff {
+    color: #fff;
+}
+
+.animate {
+    -moz-transition: color,background-color 0.3s;
+    -webkit-transition: color,background-color 0.3s;
+    -ms-transition: color,background-color 0.3s;
+    transition: color,background-color 0.3s;
+}
