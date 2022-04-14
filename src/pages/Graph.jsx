@@ -9,6 +9,7 @@ import {
     YAxis,
     Tooltip,
     ReferenceLine,
+    ReferenceDot,
     ResponsiveContainer,
     Label,
 } from "recharts";
@@ -32,6 +33,9 @@ const Graph = (props) => {
         };
     });
 
+    const latest = parsed[parsed.length - 1];
+    const toTheMoon = true;
+
     return (
         <div>
             <div className="Title">{name}</div>
@@ -53,6 +57,14 @@ const Graph = (props) => {
                 />
                 {}
                 <CartesianGrid strokeDasharray="3 3" />
+                {toTheMoon ? (
+                    <ReferenceDot
+                        x={latest["date"]}
+                        y={latest["value"]}
+                        r={0}
+                        label={<Label className="ToTheMoon">🚀</Label>}
+                    />
+                ) : null}
                 <XAxis
                     dataKey="date"
                     type="number"
