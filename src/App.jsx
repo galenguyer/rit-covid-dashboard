@@ -1,10 +1,10 @@
 import { useLocation, Routes, Route, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import useFetch from "./useFetch";
-import Index from "./pages/Index";
 import { DateTime } from "luxon";
 import "./App.css";
-import Graph from "./pages/Graph";
+const Index = lazy(() => import("./pages/Index"));
+const Graph = lazy(() => import("./pages/Graph"));
 import { useEffect } from "react";
 
 const App = () => {
@@ -12,9 +12,10 @@ const App = () => {
 
     let routerLocation = useLocation();
     useEffect(() => {
-        !window.goatcounter ?? window.goatcounter.count({
-            path: location.pathname + location.search + location.hash,
-        });
+        !window.goatcounter ??
+            window.goatcounter.count({
+                path: location.pathname + location.search + location.hash,
+            });
     }, [routerLocation]);
 
     const response = useFetch(url);
@@ -47,48 +48,64 @@ const App = () => {
                 <Route
                     path="/totalstudents"
                     element={
-                        <Graph
-                            name={"Total Student Cases"}
-                            response={response}
-                            dataKey={"total_students"}
-                            timeDifference={timeDifference}
-                        />
+                        <Suspense fallback={null}>
+                            <Graph
+                                name={"Total Student Cases"}
+                                response={response}
+                                dataKey={"total_students"}
+                                timeDifference={timeDifference}
+                            />
+                        </Suspense>
                     }
                 ></Route>
                 <Route
                     path="/totalstaff"
                     element={
-                        <Graph
-                            name={"Total Staff Cases"}
-                            response={response}
-                            dataKey={"total_staff"}
-                            timeDifference={timeDifference}
-                        />
+                        <Suspense fallback={null}>
+                            <Graph
+                                name={"Total Staff Cases"}
+                                response={response}
+                                dataKey={"total_staff"}
+                                timeDifference={timeDifference}
+                            />
+                        </Suspense>
                     }
                 ></Route>
                 <Route
                     path="/newstudents"
                     element={
-                        <Graph
-                            name={"New Student Cases"}
-                            response={response}
-                            dataKey={"new_students"}
-                            timeDifference={timeDifference}
-                        />
+                        <Suspense fallback={null}>
+                            <Graph
+                                name={"New Student Cases"}
+                                response={response}
+                                dataKey={"new_students"}
+                                timeDifference={timeDifference}
+                            />
+                        </Suspense>
                     }
                 ></Route>
                 <Route
                     path="/newstaff"
                     element={
-                        <Graph
-                            name={"New Staff Cases"}
-                            response={response}
-                            dataKey={"new_staff"}
-                            timeDifference={timeDifference}
-                        />
+                        <Suspense fallback={null}>
+                            <Graph
+                                name={"New Staff Cases"}
+                                response={response}
+                                dataKey={"new_staff"}
+                                timeDifference={timeDifference}
+                            />
+                        </Suspense>
                     }
                 ></Route>
-                <Route exact path="/" element={<Index response={response} timeDifference={timeDifference} />} />
+                <Route
+                    exact
+                    path="/"
+                    element={
+                        <Suspense fallback={null}>
+                            <Index response={response} timeDifference={timeDifference} />
+                        </Suspense>
+                    }
+                />
             </Routes>
             <footer>
                 <p>
