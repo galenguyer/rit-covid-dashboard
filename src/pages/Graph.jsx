@@ -13,7 +13,6 @@ import {
     ResponsiveContainer,
     Label,
 } from "recharts";
-import GoatCounter from "../components/GoatCounter";
 import "./Graph.css";
 
 const Graph = (props) => {
@@ -76,7 +75,6 @@ const Graph = (props) => {
                 <YAxis dataKey="value" type="number"></YAxis>
                 <Tooltip content={CustomTooltip} />
             </LineChart>
-            <GoatCounter />
         </div>
     );
 };

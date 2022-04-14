@@ -1,13 +1,21 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { useLocation, Routes, Route, Link } from "react-router-dom";
 import { useState } from "react";
 import useFetch from "./useFetch";
 import Index from "./pages/Index";
 import { DateTime } from "luxon";
 import "./App.css";
 import Graph from "./pages/Graph";
+import { useEffect } from "react";
 
 const App = () => {
     const url = localStorage.getItem("url") ?? "https://ritcoviddashboard.com/api/v0/history";
+
+    let routerLocation = useLocation();
+    useEffect(() => {
+        !window.goatcounter ?? window.goatcounter.count({
+            path: location.pathname + location.search + location.hash,
+        });
+    }, [routerLocation]);
 
     const response = useFetch(url);
 
@@ -23,86 +31,85 @@ const App = () => {
     const priorUpdate = response.loading ? null : DateTime.fromSQL(prior.last_updated).setZone(local);
 
     return (
-        <BrowserRouter>
-            <div className="App">
-                <header>
-                    <Link to="/">
-                        <h1>RIT COVID Dashboard</h1>
-                    </Link>
-                    <Updated
-                        loading={response.loading}
-                        lastUpdate={lastUpdate}
-                        priorUpdate={priorUpdate}
-                        timeDifference={timeDifference}
-                    />
-                </header>
-                <Routes>
-                    <Route
-                        path="/totalstudents"
-                        element={
-                            <Graph
-                                name={"Total Student Cases"}
-                                response={response}
-                                dataKey={"total_students"}
-                                timeDifference={timeDifference}
-                            />
-                        }
-                    ></Route>
-                    <Route
-                        path="/totalstaff"
-                        element={
-                            <Graph
-                                name={"Total Staff Cases"}
-                                response={response}
-                                dataKey={"total_staff"}
-                                timeDifference={timeDifference}
-                            />
-                        }
-                    ></Route>
-                    <Route
-                        path="/newstudents"
-                        element={
-                            <Graph
-                                name={"New Student Cases"}
-                                response={response}
-                                dataKey={"new_students"}
-                                timeDifference={timeDifference}
-                            />
-                        }
-                    ></Route>
-                    <Route
-                        path="/newstaff"
-                        element={
-                            <Graph
-                                name={"New Staff Cases"}
-                                response={response}
-                                dataKey={"new_staff"}
-                                timeDifference={timeDifference}
-                            />
-                        }
-                    ></Route>
-                    <Route exact path="/" element={<Index response={response} timeDifference={timeDifference} />} />
-                </Routes>
-                <footer>
-                    <p>
-                        By Galen Guyer. Source available on{" "}
-                        <a className="BlueLink" href="https://github.com/galenguyer/rit-covid-dashboard">
-                            GitHub
-                        </a>{" "}
-                        (
-                        <a className="BlueLink" href="https://github.com/galenguyer/rit-covid-dashboard/issues">
-                            Report Issue
-                        </a>
-                        )
-                    </p>
-                    <p>
-                        <a className="BlueLink" href="https://galenguyer.com/projects/ritcoviddashboard">
-                            API Documentation
-                        </a>
-                    </p>
-                </footer>
-            </div>
-        </BrowserRouter>
+        <div className="App">
+            <header>
+                <Link to="/">
+                    <h1>RIT COVID Dashboard</h1>
+                </Link>
+                <Updated
+                    loading={response.loading}
+                    lastUpdate={lastUpdate}
+                    priorUpdate={priorUpdate}
+                    timeDifference={timeDifference}
+                />
+            </header>
+            <Routes>
+                <Route
+                    path="/totalstudents"
+                    element={
+                        <Graph
+                            name={"Total Student Cases"}
+                            response={response}
+                            dataKey={"total_students"}
+                            timeDifference={timeDifference}
+                        />
+                    }
+                ></Route>
+                <Route
+                    path="/totalstaff"
+                    element={
+                        <Graph
+                            name={"Total Staff Cases"}
+                            response={response}
+                            dataKey={"total_staff"}
+                            timeDifference={timeDifference}
+                        />
+                    }
+                ></Route>
+                <Route
+                    path="/newstudents"
+                    element={
+                        <Graph
+                            name={"New Student Cases"}
+                            response={response}
+                            dataKey={"new_students"}
+                            timeDifference={timeDifference}
+                        />
+                    }
+                ></Route>
+                <Route
+                    path="/newstaff"
+                    element={
+                        <Graph
+                            name={"New Staff Cases"}
+                            response={response}
+                            dataKey={"new_staff"}
+                            timeDifference={timeDifference}
+                        />
+                    }
+                ></Route>
+                <Route exact path="/" element={<Index response={response} timeDifference={timeDifference} />} />
+            </Routes>
+            <footer>
+                <p>
+                    By Galen Guyer. Source available on{" "}
+                    <a className="BlueLink" href="https://github.com/galenguyer/rit-covid-dashboard">
+                        GitHub
+                    </a>{" "}
+                    (
+                    <a className="BlueLink" href="https://github.com/galenguyer/rit-covid-dashboard/issues">
+                        Report Issue
+                    </a>
+                    )
+                </p>
+                <p>
+                    <a className="BlueLink" href="https://galenguyer.com/projects/ritcoviddashboard">
+                        API Documentation
+                    </a>
+                </p>
+            </footer>
+            <script data-goatcounter="https://rcd.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+        </div>
     );
 };
 

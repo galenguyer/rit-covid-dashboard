@@ -1,5 +1,4 @@
 import Card from "../components/Card";
-import GoatCounter from "../components/GoatCounter";
 import "./Index.css";
 
 const Index = (props) => {
@@ -58,7 +57,6 @@ const Index = (props) => {
                     />
                 </div>
             </div>
-            <GoatCounter />
         </div>
     );
 };
