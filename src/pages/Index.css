@@ -16,6 +16,12 @@
     margin-top: 48px;
 }
 
+@media screen and (max-width: 600px) {
+    .Section .Title {
+        margin-top: 12px;
+    }    
+}
+
 .Cards {
     display: flex;
     justify-content: center;

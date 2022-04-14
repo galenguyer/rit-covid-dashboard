@@ -1,7 +1,9 @@
 .cardLink {
     text-decoration: none;
     color: black;
-    margin: 24px;
+    margin: 12px 24px;
+    flex-basis: 100%;
+    max-width: 200px;
 }
 
 .Card {
@@ -14,8 +16,8 @@
 
 @media screen and (max-width: 600px) {
     .Card {
-        padding: 0px 20px;
-        margin: 18px;
+        padding: 0px 16px;
+        margin: 10px 0px;
     }    
 }
 

@@ -1,37 +1,44 @@
 .App {
-  text-align: center;
-  margin: auto;
-  max-width: 90vw;
+    text-align: center;
+    margin: auto;
+    max-width: 90vw;
 
-  position: relative;
-  min-height: 100vh;
-	display: flex;
-	flex-direction: column;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .App h1 {
-  font-size: 2.4em;
-  margin: 18px 0px 8px 0px;
+    font-size: 2.4em;
+    margin: 18px 0px 8px 0px;
 }
 .Updated .Latest {
-  font-size: 1.3em;
-  margin: 0px;
+    font-size: 1.3em;
+    margin: 0px;
 }
 .Updated .Prior {
-  margin: 6px;
-  color: #666;
+    margin: 6px;
+    color: #666;
 }
 
 .App a {
-  text-decoration: none;
-  color: #000;
+    text-decoration: none;
+    color: #000;
 }
 
 .BlueLink {
-  color: #008 !important;
+    color: #008 !important;
 }
 
 footer {
-  margin-top: auto;
-  margin-bottom: 20px;
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .App {
+        margin: auto;
+        max-width: 95vw;
+    }
 }
