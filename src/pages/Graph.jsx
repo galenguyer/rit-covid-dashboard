@@ -33,7 +33,8 @@ const Graph = (props) => {
     });
 
     const latest = parsed[parsed.length - 1];
-    const toTheMoon = true;
+    const prior = parsed[parsed.length - 2]
+    const toTheMoon = latest.value > prior.value + 1;
 
     return (
         <div>
