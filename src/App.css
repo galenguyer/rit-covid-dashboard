@@ -13,14 +13,6 @@
     font-size: 2.4em;
     margin: 18px 0px 8px 0px;
 }
-.Updated .Latest {
-    font-size: 1.3em;
-    margin: 0px;
-}
-.Updated .Prior {
-    margin: 6px;
-    color: #666;
-}
 
 .App a {
     text-decoration: none;

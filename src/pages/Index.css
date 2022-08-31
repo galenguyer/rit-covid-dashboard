@@ -2,27 +2,3 @@
     margin-top: 24px;
     font-size: 1.4em;
 }
-
-@media screen and (max-width: 600px) {
-    .Message {
-        display: none;
-    }
-}
-
-.Section .Title {
-    text-align: center;
-    font-size: 1.6em;
-    flex-basis: 100%;
-    margin-top: 48px;
-}
-
-@media screen and (max-width: 600px) {
-    .Section .Title {
-        margin-top: 12px;
-    }    
-}
-
-.Cards {
-    display: flex;
-    justify-content: center;
-}

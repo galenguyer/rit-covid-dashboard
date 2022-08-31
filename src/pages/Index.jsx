@@ -1,62 +1,60 @@
-import Card from "../components/Card";
 import "./Index.css";
 
-const Index = (props) => {
-    const response = props.response;
-    if (response.loading) {
-        return <div>Loading...</div>;
-    }
-
-    const data = response.data;
-
-    const latest = data[data.length - 1];
-    const prior = data[data.length - (1 + props.timeDifference)];
-
+const Index = () => {
     return (
-        <div>
-            <div>
-                <div className="Message">
-                    This dashboard has been refreshed for the new semester. Historical data from the 2020-2021 school
-                    year is available at <a href="//2020.ritcoviddashboard.com">2020.ritcoviddashboard.com</a>. Data
-                    from the Fall 2021 semester is available at{" "}
-                    <a href="//2021.ritcoviddashboard.com">2021.ritcoviddashboard.com</a>.
-                </div>
-            </div>
-            <div className="Section" id="total">
-                <div className="Title">Total Positive Cases Since January 10 (First Day of Classes)</div>
-                <div className="Cards">
-                    <Card
-                        name="Students"
-                        link="/totalstudents"
-                        latest={latest["total_students"]}
-                        diff={latest["total_students"] - prior["total_students"]}
-                    />
-                    <Card
-                        name="Staff"
-                        link="/totalstaff"
-                        latest={latest["total_staff"]}
-                        diff={latest["total_staff"] - prior["total_staff"]}
-                    />
-                </div>
-            </div>
+        <div className="Message">
+            <h2>2022-2023 Dashboard</h2>
+            <p>
+                RIT is not providing a COVID dashboard for the 2022-2023 semester. As such, I have no source for any
+                data to update this dashboard.
+            </p>
+            <p>
+                At the beginning of the semester, <a href="https://rit.edu/ready">rit.edu/ready</a> claimed that a new
+                dashboard would be published, as visible in{" "}
+                <a className="BlueLink" href="https://web.archive.org/web/20220802081911/https://www.rit.edu/ready/">
+                    this snapshot taken August 2nd on archive.org
+                </a>
+                . However, that was removed sometime between August 15th and August 31st, as seen in{" "}
+                <a className="BlueLink" href="https://web.archive.org/web/20220831160558/https://www.rit.edu/ready/">
+                    this snapshot taken August 31st.
+                </a>{" "}
+                The updated site did claim "The level of COVID RNA found in this week’s wastewater samples is slightly
+                higher than last spring".
+            </p>
 
-            <div className="Section" id="new">
-                <div className="Title">New Positive Cases From Past 14 Days</div>
-                <div className="Cards">
-                    <Card
-                        name="Students"
-                        link="/newstudents"
-                        latest={latest["new_students"]}
-                        diff={latest["new_students"] - prior["new_students"]}
-                    />
-                    <Card
-                        name="Staff"
-                        link="/newstaff"
-                        latest={latest["new_staff"]}
-                        diff={latest["new_staff"] - prior["new_staff"]}
-                    />
-                </div>
-            </div>
+            <p>
+                There is a{" "}
+                <a class="BlueLink" href="https://pawprints.rit.edu/?p=3546">
+                    PawPrints petition to restore the COVID dashboard
+                </a>{" "}
+                so students can see the current level of risk. If you're concerned about RIT's handling of the pandemic,
+                you should sign this! Unless RIT gives us the dashboard back, we have no visiblity into how many cases
+                there are on campus.
+            </p>
+
+            <hr />
+
+            <h3>Prior Dashboards</h3>
+            <p>
+                The dashboards from the last two years are still online. I'll be keeping them up indefinitely so
+                everyone can see RIT's handling of the pandemic.
+            </p>
+            <p>
+                The dashboard for the 2020-2021 school year is available at{" "}
+                <a className="BlueLink" href="https://2020.ritcoviddashboard.com/">
+                    2020.ritcoviddashboard.com
+                </a>
+            </p>
+            <p>
+                The dashboard for the 2021-2022 school year is available at{" "}
+                <a className="BlueLink" href="https://2021.ritcoviddashboard.com/">
+                    2021.ritcoviddashboard.com
+                </a>
+            </p>
+            <p>
+                If you would like the raw data I've collected, or have any questions, concerns, or comments, please
+                reach out to me at <a href="mailto:gkg1648@rit.edu">gkg1648@rit.edu</a>
+            </p>
         </div>
     );
 };
